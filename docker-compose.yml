@@ -1,0 +1,5 @@
+services:
+  pythonapp:
+    build: ./
+    command: python3 --wait-for-client --listen 0.0.0.0:5678 app.py 
+    

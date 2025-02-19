@@ -12,6 +12,7 @@ FROM python:3.11-slim
 #RUN python -m pip install -r requirements.txt
 RUN python -m pip install pandas
 RUN python -m pip install debugpy
+RUN pip install jupyter
 
 RUN python3 -m pip list
 

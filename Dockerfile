@@ -2,10 +2,13 @@
 FROM python:3.11-slim
 
 # Keeps Python from generating .pyc files in the container
-# ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONDONTWRITEBYTECODE=1
 
 # Turns off buffering for easier container logging
-# ENV PYTHONUNBUFFERED=1
+ENV PYTHONUNBUFFERED=1
+
+# Install make and other dependencies
+RUN apt-get update && apt-get install -y make
 
 # Install pip requirements
 #COPY requirements.txt .
@@ -14,8 +17,9 @@ RUN python -m pip install pandas
 RUN python -m pip install debugpy
 RUN pip install jupyter
 
-RUN python3 -m pip list
-
+# Set up Jupyter Notebook configuration
+RUN mkdir -p /root/.jupyter
+COPY jupyter_notebook_config.py /root/.jupyter/
 
 WORKDIR /app
 COPY . /app
@@ -26,7 +30,8 @@ RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /
 USER appuser
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-# CMD ["python", "app.py"]
-CMD ["python3", "app.py"]
+CMD ["python", "app.py"]
+# Run the Jupyter Notebook configuration script and then start the Jupyter server
+# CMD python -m /app/jupyter_notebook_config.py && jupyter notebook --ip=0.0.0.0 --no-browser --allow-root
 
 # docker build cmd -> docker build -t test-docker .

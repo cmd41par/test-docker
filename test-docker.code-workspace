@@ -7,5 +7,7 @@
 			"path": "../test-volume"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"makefile.configureOnOpen": false
+	}
 }

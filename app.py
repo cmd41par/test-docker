@@ -15,7 +15,7 @@ def main():
         # running in a container
         env = "/test-volume" + "/" + os.environ["ENV"]
     else:
-        env = "/Users/chrisd/dev-projects/test-volume"
+        env = f"/Users/{getpass.getuser()}/dev-projects/test-volume"
 
     fname = env + "/app.log"
 

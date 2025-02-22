@@ -16,10 +16,7 @@ RUN apt-get update && apt-get install -y make
 RUN python -m pip install pandas
 RUN python -m pip install debugpy
 RUN pip install jupyter
-
-# Set up Jupyter Notebook configuration
-RUN mkdir -p /root/.jupyter
-COPY jupyter_notebook_config.py /root/.jupyter/
+RUN pip install pytest
 
 WORKDIR /app
 COPY . /app

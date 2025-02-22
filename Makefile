@@ -10,6 +10,10 @@ else
     VOLUME_PATH=/home/user/dev-projects/test-volume
 endif
 
+# Target to show wsl version
+wsl_version:
+	wsl --version
+
 # Target to build the Docker image
 build_container:
 	docker build -t $(IMAGE_NAME) .

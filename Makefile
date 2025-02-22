@@ -1,9 +1,10 @@
 # Define the Docker image name
 IMAGE_NAME=test-docker
+LOCAL_USER=localuser
 
 # Detect the operating system
 ifeq ($(OS),Windows_NT)
-    PROJECT_PATH=c:/Users/cmd41/dev-projects/test-docker
+    PROJECT_PATH=c:/Users/$(LOCAL_USER)/dev-projects/test-docker
     VOLUME_PATH=c:/var/data
 else
     PROJECT_PATH=/home/user/dev-projects/test-docker

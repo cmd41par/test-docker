@@ -47,6 +47,7 @@ make wsl_version
   ```
 
 ### 3. Run container for debugging
+* Fix the **LOCAL_USER** variable in Makefile to help point to app source code
 * Make a "data" volume with a **prod** subfolder to demonstrate *environments* 
   * something like **c:/var/data**
     * make **prod** and **dev** subfolders
